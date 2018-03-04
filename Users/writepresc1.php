@@ -8,6 +8,13 @@ include '../Shared/Assets/conditionforlogin.php';
   //  include '../Shared/Assets/links.php';
   include '../Shared/link.php';
     ?>
+
+<!--  Search Box Links-->
+<link rel="stylesheet" href="style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="choosen.js"></script>
+
+
   </head>  
   
   <body class="size-1140">
@@ -22,6 +29,10 @@ include '../Shared/Assets/conditionforlogin.php';
   {
     include '../Shared/header1.php';
   }
+  include '../Shared/Classes/classpresc1.php';
+  $cnn=new pre();
+  $result=$cnn->selectallmedicine();
+
 ?>
 
       
@@ -70,8 +81,16 @@ include '../Shared/Assets/conditionforlogin.php';
                         echo '<div class="margin">'.
                         '<div class="s-12 m-12 l-6">'.
                         '<tr>'.
-                                '<td>'.
-                                '<input type="text" placeholder="Medicine '.$cnt.'" name="med'.$cnt.'"></td>'.
+                                '<td><select class="chosen" name="med'.$cnt.'" style="width:200px;">'.
+                                //'<input type="text" placeholder="Medicine '.$cnt.'" name="med'.$cnt.'">
+                                '<option value="NoMedicineSelected">Type Medicines Name Here</option>';
+                              
+                                while($row=$result->fetch_assoc())
+                                {
+                                echo '<option value="'.$row["pk_med_id"].'">'.$row["med_name"].'</option>';
+                                }
+                                $result=$cnn->selectallmedicine();
+                                echo '</select></td>'.
                                 '<td><textarea rows="3" placeholder="Notes" cols="35" name="instr'.$cnt.'"></textarea></td>'.
                                 '<td><input type="number" placeholder="Dosage for Morning" name="mor'.$cnt.'"></td>'.
                                 '<td><input type="number" placeholder="Doasage for Afternoon" name="non'.$cnt.'"></td>'.
@@ -98,6 +117,9 @@ include '../Shared/Assets/conditionforlogin.php';
     </main>
     
     <!-- FOOTER -->
+    <script type="text/javascript">
+$(".chosen").chosen();
+</script>
     <?php
             include '../Shared/indexfooter.php';
       ?>

@@ -35,7 +35,7 @@ if(!(isset($_POST["sub1"])))
         <div class="line">
             <?php
             
-                                  
+                   
                     $medicines=null;
                     $days=$mornings=$noons=$nights=$instructions=null;
                     for($i=1;$i<=$_POST["mcnt"];$i++)
@@ -181,13 +181,13 @@ $mail->SMTPSecure = 'ssl';
 $mail->Host = 'smtp.gmail.com';
 
 // set the SMTP port for the GMAIL server
-$mail->Port = 465;
+$mail->Port = 587;
 
 // your gmail address
-$mail->Username = 'jackjonesshah@gmail.com';
+$mail->Username = 'medskyy@gmail.com';
 
 // your password must be enclosed in single quotes
-$mail->Password = 'malav@957460';
+$mail->Password = 'nopassword1234';
 
 // add a subject line
 $mail->Subject = 'Your Prescription';

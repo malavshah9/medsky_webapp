@@ -23,6 +23,16 @@ class pre
         pre::disconnect();        
    
     }
+    public function selectallmedicine()
+    {
+        $conn=pre::connect();
+        $q="select * from medicine_mst";
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();        
+   
+    }
+    
     public function getprescriptionbyid($pid)
     {
         $conn=pre::connect();
