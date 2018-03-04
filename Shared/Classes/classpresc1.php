@@ -91,6 +91,23 @@ class pre
         return $result;
         pre::disconnect();
     }
+    public function getpatientname($pid)
+    {
+        $conn=pre::connect();
+        $q="select usr_name from user_mst where pk_usr_email_id='".$pid."'";
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();
+        
+    }
+    public function getdoctorname($pid)
+    {
+        $conn=pre::connect();
+        $q="select doc_name from doctor_mst where pk_doc_email_id='".$pid."'";
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();
+  }
     public function display($uid,$did)
     {
         $conn=pre::connect();
