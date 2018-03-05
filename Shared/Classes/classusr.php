@@ -88,7 +88,7 @@ class usr_all
          $mail->Username = 'medskyy@gmail.com';
 
          // your password must be enclosed in single quotes
-         $mail->Password = 'crushed009';
+         $mail->Password = 'nopassword1234';
 
          // add a subject line
          $mail->Subject = 'Verification Mail';

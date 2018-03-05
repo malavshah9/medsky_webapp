@@ -27,7 +27,8 @@
               <li><a href="../Visitors/patientlogsign.php"> <font size="4">Patient Add or Sign Up</a></li>
               
               <li><a href="../user_mst/patlogout.php"> <font size="4">Patient Log Out</a></li>
-              
+
+              <li><a href="../Doctor_mst/docprofile.php"> <font size="4">Profile</a></li>
               
               <li><a href="../user_mst/logout.php"> <font size="4">Log Out</a></li>
             </ul>

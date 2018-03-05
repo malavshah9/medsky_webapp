@@ -44,8 +44,16 @@ echo '<h1><p class="reset"><a tabindex="4" href="../user_mst/verifyrep.php?token
 else
 {
 	//header('location:index.php');
-	echo "Enter Appropriate Password";
-	echo $uid,$pass;
+	//echo "Enter Appropriate Password";
+	//echo $uid,$pass;
+	//echo "Entered User id Already taken";
+	//header('patientlogsign.php');
+	//echo '<script language="javascript">';
+  //echo 'alery(Enter Appropriate Password)'; 
+  //echo '</script>';
+  
+echo '<div class="btn btn-dark btn-lg btn-block">Enter Appropriate Username and PassWord </div>';
+
 }
 	
 }

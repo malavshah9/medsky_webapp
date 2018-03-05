@@ -43,21 +43,43 @@ echo '<h1><p class="reset"><a tabindex="4" href="../doctor_mst/verifyrepeat.php?
 } 
 	else
 	{
-		//header('location:doclog.php');
-		echo "Enter Appropriate Password";
-		echo "<br>";
-		echo $id;
-		echo "<br>";
-		echo $pass;
-	}
 		
+		//echo "Enter Appropriate Password";
+		//echo "<br>";
+		//header("Location:login.php");
+		//echo $id;
+		//echo "<br>";
+
+		
+		//echo $pass;
+		
+	
+  
+		 //phpAlert("Hello world!\\n\\nPHP has got an Alert Box");  
+  /*echo '<script language="javascript">';
+  echo 'alery(Enter Appropriate Password)';  //not showing an alert box.
+  echo '</script>';*/
+  
+
+ /*<script language="javascript">
+alert("Enter Appropriate Password");
+//echo '$id';
+</script>*/
+
+
+  
+
+
+	}		
 }	
+
 
 	else
 	{
 		//header('location:../visitor/index.php');
 		
 	}
+	
 
 	
     

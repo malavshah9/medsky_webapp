@@ -3,7 +3,28 @@
 ?>
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en-US">
+  <head>
+  <?php
+  //  include '../Shared/Assets/links.php';
+  include '../Shared/link.php';
+    ?>
+  </head>  
+  
+  <body class="size-1140">
+  	<!-- HEADER -->
+    
+      <?php
+  if(empty($_SESSION["id"]))
+  {
+    include '../Shared/header.php';
+  }
+  else
+  {
+    include '../Shared/header1.php';
+  }
+?>
+
 
     <head>
 	
@@ -15,15 +36,12 @@
 
          
         
-        <link rel="stylesheet" href="../shared/assets1/bootstrap/css/bootstrap.min.css">
+       <!-- <link rel="stylesheet" href="../shared/assets1/bootstrap/css/bootstrap.min.css">
          <link rel="stylesheet" href="../shared/assets1/font-awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" href="../shared/assets1/css/form-elements.css">
-        <link rel="stylesheet" href="../shared/assets1/css/style.css">
+        <link rel="stylesheet" href="../shared/assets1/css/style.css">-->
 
-
-        <?php
-      include '../Shared/link.php';
-      ?>
+        
   
 
 
@@ -95,8 +113,8 @@ $id=$_SESSION["id"];
     require '../Shared/Classes/classdeg.php';
     ?>
     <?php
-      //include '../Shared/link.php';
-      require '../shared/header.php';
+      include '../Shared/link.php';
+     // require '../shared/header.php';
        
     ?>
     
@@ -121,6 +139,12 @@ $gen=$row["doc_gen"];
     
     
 ?>-->
+<?php
+    if(isset($_POST["btn1"]))
+    {
+        echo '<form action="a.php"method="post"> </form>';
+    }
+?>
  
  <div class="col-sm-4"></div>
  
@@ -136,61 +160,85 @@ $gen=$row["doc_gen"];
          
          </div>
      </div>
-     <div class="form-bottom">
-         <form role="form" action="adddetail.php" method="post" class="registration-form">
-             <div class="form-group">
-                 <label class="sr-only" for="form-email">Name</label>
-                 <input type="text" name="nm"  value="<?php echo $name; ?>" class="form-email form-control"readonly>
+     <div class="form-bottom" align="left">
+         <form role="form" action="docprofile.php" method="post" class="registration-form">
+         <table height="60%"width="100%">
+             <div>
+                <tr>
+                <td><font size=""><b> <label class="sr-only" for="form-email">Name :- </label></td>
+                 <td><input type="text" name="nm" size="100"cols="5" value="<?php echo $name; ?>"readonly>&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;</td>
+                 </tr>
+             </div>
+            <div class="form-group">
+                <tr>            
+                 <td><b><label class="sr-only" for="form-password">Email id :-</label></td>
+                 <td><input type="text" name="id"size="100" value="<?php echo $id; ?>" class="form-passwd form-control" readonly></td>
+                 </tr>
              </div>
              <div class="form-group">
-                 <label class="sr-only" for="form-password">Email id</label>
-                 <input type="text" name="id" value="<?php echo $id; ?>" class="form-passwd form-control" readonly>
-             </div>
-             <div class="form-group">
-                 <label class="sr-only" for="form-doclic-no">Licence No</label>
-                 <input type="text" name="lno"  value="<?php echo $lno; ?>"placeholder="Licence no..." class="form-lno form-control" id="form-email"readonly>
+                <tr>
+                 <td><b><label class="sr-only" for="form-doclic-no">Licence No :-</label></td>
+                 <td><input type="text" name="lno" size="100" value="<?php echo $lno; ?>"placeholder="Licence no..." class="form-lno form-control" id="form-email"readonly></td>
+                 </tr>
              </div>
 
              <div class="form-group">
-                 <label class="sr-only" for="form-name">Mobile No</label>
-                 <input type="text" name="mno" value="<?php echo $mob; ?>" placeholder="Name..." class="form-name form-control" id="form-name"readonly>
+             <tr>
+                 <td><b><label class="sr-only" for="form-name">Mobile No :-</label></td>
+                 <td><input type="text" name="mno"size="100" value="<?php echo $mob; ?>" placeholder="Name..." class="form-name form-control" id="form-name"readonly></td>
+                 </tr>
              </div>
              <div class="form-group">
-             <label class="sr-only" for="form-name">Gender</label>
-             <input type="text" value="<?php echo $gen; ?>" placeholder="" id="" name="gen"class="form-control" class="input-text " readonly></center>
+             <tr>
+             <td><b><label class="sr-only" for="form-name">Gender :-</label></td>
+             <td><input type="text" value="<?php echo $gen; ?>"size="100" placeholder="" id="" name="gen"class="form-control" class="input-text " readonly></center></td>
+             </tr>
         
              </div>
            
              <div class="form-group">
-             <label class="sr-only" for="form-name">Specialist</label>
-             <input type="text" value="" placeholder="Specialist..." id="" name="spec"class="form-control" class="input-text ">
-        
+             <tr>
+             <td><b><label class="sr-only" for="form-name">Specialist :-</label></td>
+             <td><input type="text" value=""size="100" placeholder="Specialist..." id="" name="spec"class="form-control" class="input-text "></td>
+            </tr>
              </div>
             
              <div class="form-group">
-             <label class="sr-only" for="form-name">Degree</label>
-             <input type="text" value="" placeholder="Degree..." id="" name="deg"class="form-control" class="input-text ">
+            <tr>
+             <td><b><label class="sr-only" for="form-name">Degree :-</label></td>
+             <td><input type="text" value=""size="100" placeholder="Degree..." id="" name="deg"class="form-control" class="input-text "></td>
+             </tr>
         
              </div>
-             <div class="form-group">
+           <!--  <div class="form-group">
              <label class="sr-only" for="form-name">Profile Pic</label>
              <input type="file" value="" placeholder="profile picture.." id="" name="pc"class="form-control" class="input-text ">
         
-             </div>
+             </div>-->
              <div class="form-group">
-             <label class="sr-only" for="form-name">Address</label>
-            <textarea rows="5" cols="30"placeholder="address..."></textarea>
+             <tr>
+            <td><b><label class="sr-only" for="form-name">Address :-</label></td>
+            <td><textarea rows="5" cols="50"size="100"placeholder="Address..."></textarea></td>
+            </tr>
         
              </div>
-           
-           
-           
-           
-
-             <button type="submit"name="btn" >Add Details</button>
-            
-          
-         </form>
+             <tr>
+             <td>
+           <center><font size="12"><button type="submit"name="btn">Add Details</button></center>
+          <td>  <font size="12"><button type="submit"name="btn1">Change Password</button></td>
+             </tr>
+             </table>
+            </form>
+           <!-- <form role="form" method="post" action="a.php">
+            <table>
+            <tr>
+            <td>
+            <center> <font size="12"><button type="submit"name="btn"size="20">Change Password</button></center></td>
+            </td>
+            </tr>
+            </table>
+            </form>-->
          
      </div>
  </div>
@@ -201,7 +249,7 @@ $gen=$row["doc_gen"];
 </div>
 </div>
 <?php
-    include '../shared/footer.php';
+  include '../shared/indexfooter.php';
     ?>
 
 </div>

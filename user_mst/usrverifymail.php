@@ -6,7 +6,7 @@ require_once "../Shared/phpmailer/class.phpmailer.php";
 	$r=md5(rand());
 	$token=substr($r,0,10);
     $rmail="mdshah9574@gmail.com";
-$link='<a href="localhost/Medsky1.1/user_mst/usrverify.php?token='.$token.'&?id='.$rmail.'">Please Click here to Verify</a>';
+$link='<a href="localhost/Medskyweb/user_mst/usrverify.php?token='.$token.'&?id='.$rmail.'">Please Click here to Verify</a>';
 $message="Please click on below link to verify<br>".$link;
 // creating the phpmailer object
 $mail = new PHPMailer(true);
@@ -30,18 +30,18 @@ $mail->Host = 'smtp.gmail.com';
 $mail->Port = 465;
 
 // your gmail address
-$mail->Username = 'shoppercompanyservice@gmail.com';
+$mail->Username = 'medskyy@gmail.com';
 
 // your password must be enclosed in single quotes
-$mail->Password = 'common@1234';
+$mail->Password = 'nopassword1234';
 
 // add a subject line
 $mail->Subject = 'Verification Mail';
 
 // Sender email address and name
-$mail->SetFrom('shopper@info.com', 'Shopper Company Services');
+$mail->SetFrom('medsky@gmail.com', 'info.medsky');
 
-$email1="mdshah9574@gmail.com";
+//$email1="mdshah9574@gmail.com";
 // reciever address, person you want to send
 $mail->AddAddress($email1);
 
