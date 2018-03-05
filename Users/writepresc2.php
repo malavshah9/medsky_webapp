@@ -38,54 +38,72 @@ if(!(isset($_POST["sub1"])))
         <form class="customform" name="writepresc2" action="writepresc3.php" method="post">
         <div class="line">
             <?php
+
+            include '../Shared/Classes/classpresc1.php';
+            $conn=new pre();
+          
+
                     $notes="-";
                     $j=0;
-                    $mcnt=0;
-                    for($cnt=1;$cnt<=5;$cnt++)
+                    $mcnt=1;
+                    echo '<tr><td>Sr.No</td><td>Medicine Name</td><td>Morning Dose</td><td>Noon Dose</td><td>Night Dose</td><td>Days</td><td>Instructions</td></tr>';
+                    $mname="med".$mcnt;
+                    while(!($_POST["$mname"]=="NoMedicineSelected"))
                     {
-                      $mcnt++;
-                      $mname="med".$cnt;
-                      $iname="instr".$cnt;
-                      $morname="mor".$cnt;
-                      $nonname="non".$cnt;
-                      $nigname="nig".$cnt;
-                      $day="day".$cnt;
-                    if($_POST["$mname"]==null)
+                    
+                      
+                      $iname="instr".$mcnt;
+                      $morname="mor".$mcnt;
+                      $nonname="non".$mcnt;
+                      $nigname="nig".$mcnt;
+                      $day="day".$mcnt;
+                 /*   if($_POST["$mname"]==null)
                     {
                       $mcnt--;
                       break;
                     }
-
-                    echo '<input type="hidden" name="mor'.$cnt.'" value="'.$_POST["$morname"].'">';
+                  */
+                    /*if()
+                    {
+                      break;
+                    }*/
+                    echo '<input type="hidden" name="mor'.$mcnt.'" value="'.$_POST["$morname"].'">';
                     
-                    echo '<input type="hidden" name="non'.$cnt.'" value="'.$_POST["$nonname"].'">';
+                    echo '<input type="hidden" name="non'.$mcnt.'" value="'.$_POST["$nonname"].'">';
 
-                    echo '<input type="hidden" name="nig'.$cnt.'" value="'.$_POST["$nigname"].'">';
+                    echo '<input type="hidden" name="nig'.$mcnt.'" value="'.$_POST["$nigname"].'">';
 
-                    echo '<input type="hidden" name="ins'.$cnt.'" value="'.$_POST["$iname"].'">';
+                    echo '<input type="hidden" name="ins'.$mcnt.'" value="'.$_POST["$iname"].'">';
 
-                    echo '<input type="hidden" name="day'.$cnt.'" value="'.$_POST["$day"].'">';
+                    echo '<input type="hidden" name="day'.$mcnt.'" value="'.$_POST["$day"].'">';
 
-                    echo '<input type="hidden" name="med'.$cnt.'" value="'.$_POST["$mname"].'">';
+                    echo '<input type="hidden" name="med'.$mcnt.'" value="'.$_POST["$mname"].'">';
                     echo '<div class="margin">'.
-                      '<div class="s-12 m-12 l-6">'.
-                      '<tr><td>Medicine'.$cnt.':</td><td>'.$_POST["$mname"].'</td></tr>';
-                     echo '<tr rowspan="3"><td>Timings</td><td>Morning</td><td>'.$_POST["$morname"].'</td></tr>';
-                     echo '<tr><td></td><td>Afternoon</td><td>'.$_POST["$nonname"].'</td></tr>';
-                     echo '<tr><td></td><td>Night</td><td>'.$_POST["$nigname"].'</td></tr>';
-                     echo '<tr><td>Days:</td><td>'.$_POST["$day"].'</td></tr>';
-                     echo '<tr><td>Instructions</td><td>'.$_POST["$iname"].'</td></tr>';
+                      '<div class="s-12 m-12 l-6">';
+                      $result=$conn->medicinenamebyid($_POST["$mname"]);
+                      $row=$result->fetch_assoc();
+                      
+                      echo '<tr><td>'.$mcnt.'</td><td>'.$row["med_name"].'</td>';
+                     echo '<td>'.$_POST["$morname"].'</td>';
+                     echo '<td>'.$_POST["$nonname"].'</td>';
+                     echo '<td>'.$_POST["$nigname"].'</td>';
+                     echo '<td>'.$_POST["$day"].'</td>';
+                     echo '<td>'.$_POST["$iname"].'</td></tr>';
                      
                       
                      echo '</div>'.
                     '</div>';
+                    $mcnt++;
+                    $mname="med".$mcnt;
                   }
+                  $mcnt--;
             ?>
                   <div class="margin">
                       <div class="s-12 m-12 l-6">
-                        <tr><td><label>Notes</label></td><td>
+                        
                           <strong>
                         <?php
+                      
                                echo '<input type="hidden" name="mcnt" value="'.$mcnt.'">';
                                
                        /* if($_POST["notes"]==null)  
@@ -102,7 +120,7 @@ if(!(isset($_POST["sub1"])))
                         }*/
                         ?>
                       </strong>
-                      </td></tr>
+                      
                       </div>
                     </div>
 

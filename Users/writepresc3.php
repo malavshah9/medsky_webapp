@@ -35,7 +35,8 @@ if(!(isset($_POST["sub1"])))
         <div class="line">
             <?php
             
-                                  
+            require '../Shared/Classes/classpresc1.php';
+            $cnn=new pre;
                     $medicines=null;
                     $days=$mornings=$noons=$nights=$instructions=null;
                     for($i=1;$i<=$_POST["mcnt"];$i++)
@@ -69,8 +70,7 @@ if(!(isset($_POST["sub1"])))
                     echo $instructions.'<br>';*/
                    
                     
-                    require '../Shared/Classes/classpresc1.php';
-                    $cnn=new pre;
+                    
                     $uid=$_SESSION["pid"];
                     $did=$_SESSION["id"];
                      $result=$cnn->insertmd($did,$uid,$medicines,$mornings,$noons,$nights,$instructions,$days);
@@ -93,6 +93,14 @@ if(!(isset($_POST["sub1"])))
 date_default_timezone_set('Asia/Kolkata');
 $timestamp = time();
 $date_time = date("d-m-Y (D) H:i:s", $timestamp);
+$res=$cnn->getpatientname($_SESSION["pid"]);
+$row=$res->fetch_assoc();
+$patname=$row["usr_name"];
+
+$res=$cnn->getdoctorname($_SESSION["id"]);
+$row=$res->fetch_assoc();
+$docname=$row["doc_name"];
+
 
 $medskybody='<p align="center">
 <font color="red" size="10">
@@ -116,7 +124,7 @@ $medskybody='<p align="center">
 <form>
         
 <tr><td colspan="3">Date:</td><td colspan="3">'.$date_time.'</td></tr>
-<tr><td>Doctor Name</td><td colspan="2">ABC</td><td>Patient Name</td><td colspan="2">FGH</td></tr>
+<tr><td>Doctor Name</td><td colspan="2">'.$docname.'</td><td>Patient Name</td><td colspan="2">'.$patname.'</td></tr>
 <tr rowspan="2">
 <th>Medicine Name</th>
 <th>Days</th>
@@ -140,10 +148,11 @@ for($i=1;$i<=$_POST["mcnt"];$i++)
     $nonname="non".$i;
     $nigname="nig".$i;
     $day="day".$i;
-
+    $res=$cnn->medicinenamebyid($_POST["$mname"]);
+    $row=$res->fetch_assoc();
     $medskybody=$medskybody.'<tr>  
     <td>'.
-    $_POST["$mname"].'</td>
+    $row["med_name"].'</td>
     <td>'.$_POST["$day"].'</td>
     <td>'.$_POST["$morname"].'</td>
     <td>'.$_POST["$nonname"].'</td>
@@ -181,13 +190,13 @@ $mail->SMTPSecure = 'ssl';
 $mail->Host = 'smtp.gmail.com';
 
 // set the SMTP port for the GMAIL server
-$mail->Port = 465;
+$mail->Port = 587;
 
 // your gmail address
-$mail->Username = 'jackjonesshah@gmail.com';
+$mail->Username = 'medskyy@gmail.com';
 
 // your password must be enclosed in single quotes
-$mail->Password = 'malav@957460';
+$mail->Password = 'nopassword1234';
 
 // add a subject line
 $mail->Subject = 'Your Prescription';
@@ -195,7 +204,7 @@ $mail->Subject = 'Your Prescription';
 // Sender email address and name
 $mail->SetFrom('medsky@gmail.com', 'info.medsky');
 
-$email1="parth.babu05@gmail.com";
+$email1=$_SESSION["pid"]; 
 // reciever address, person you want to send
 $mail->AddAddress($email1);
 

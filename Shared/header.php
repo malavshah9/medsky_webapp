@@ -13,9 +13,10 @@
             <p class="nav-text"></p>
             <ul class="right chevron">
               <li><a href="../Visitors/index.php"> <font size="4">Home</font></a></li>
-              <li><a href="../Visitors/login.php"> <font size="4">Doctor LogIn/Sign Up</a></li>
-              <li><a href="../Users/writepresc1.php"> <font size="4">Write Prescription</a></li>
-              
+              <li><a href="../Visitors/login.php"> <font size="4">Doctor LogIn/Sign Up</font></a></li>
+              <li><a href="../Users/writepresc1.php"> <font size="4">Write Prescription</font></a></li>
+              <li><a href="../Users/writeblog1.php"><font size="4">Write Blogs</font></a></li>
+              <li><a href="../Users/viewmypatients.php"><font size="4">My Patients List</font></a></li>
             </ul>
           </div>
         </div>

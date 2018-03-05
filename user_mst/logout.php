@@ -2,7 +2,7 @@
 session_start();
 {
     $_SESSION["id"]=null;
-    echo $_SESSION["id"];
+    $_SESSION["pid"]=null;
     
 }
 ?>
