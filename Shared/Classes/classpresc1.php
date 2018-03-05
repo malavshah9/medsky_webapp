@@ -100,6 +100,15 @@ class pre
         pre::disconnect();
         
     }
+    public function viewmypatient($uid)
+    {
+        $conn=pre::connect();
+        $q="select MAX(p.pres_date),u.usr_name,u.usr_mno,u.usr_gen from user_mst u,prescription_mst p where p.fk_doc_email_id='".$uid."' GROUP BY p.fk_usr_email_id";
+        $result=$conn->query($q);
+        return $result;
+        pre::disconnect();
+        
+    }
     public function getdoctorname($pid)
     {
         $conn=pre::connect();
