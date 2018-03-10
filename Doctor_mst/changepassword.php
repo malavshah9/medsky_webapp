@@ -12,16 +12,20 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         $result=$obj->chngpass($_email,$_oldpass,$_newpass);
         //echo "update user_tbl set user_pass='".$_newpass."' where email_id='".$_email."' ";
         if($result===true){
-            echo "Password updated";
-            header('location:../visitor/login.php');
+            echo '<div class="btn btn-dark btn-lg btn-block">PassWord is Updated </div>';
+            header('location:../visitors/login.php');
         }
         else{
-            echo "Not done";
-            echo $result;
+            header('location:../visitors/login.php');
+            echo '<div class="btn btn-dark btn-lg btn-block">PassWord is incorrect </div>';
+            //echo "Not done";
+           // echo $result;
         }
         }
         else{
-            echo "Passwords are not same";
+            header('location:../visitors/login.php');
+            echo '<div class="btn btn-dark btn-lg btn-block">PassWord are not same.. </div>';
+           // echo "Passwords are not same";
         }
     }
 

@@ -37,9 +37,18 @@ if (empty($_SESSION["id"])) {
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
   </ol>
   <div class="carousel-inner"></div>
-    <div class="carousel-item active">
+  <div class="carousel-item active">
+      <img class="d-block w-100"height="60%" src="../Shared/img/medi.jpg" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Write Online Precription</h5>
+        <p>By this Site you can write Precription to any Patient.</p>
+      </div>
+    </div>
+    
+    <div class="carousel-item">
       <img class="d-block w-100" src="../Shared/img/MainImgs/MedicalImg1.jpg" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
         <h5>Write Online Precription</h5>
@@ -70,19 +79,46 @@ if (empty($_SESSION["id"])) {
     <span class="sr-only">Next</span>
   </a>
 </div>
+<table>
+<tr>
+<td align="center">
+<video data-keepplaying="controls loop" id="consultAnimation" class="" width="320" height="480" autoplay="" controls loop>
+<source id="consultAnimationSource" src="../Shared/img/video.webm" type="video/webm"></td>
 
+<td align="left">
+<div class="home-details-section-title">
+                                        <h1 class="u-d-inline">Skip the waiting room.</h2>
+                                        <h1 class="u-d-inline u-t-bold">Chat With Us.</h2>
+                                    </div>
 
+<div class="home-details-section-title">
+                                            <i class="icon-ic_done_open_system"></i>
+                                            <span class="u-t-bold">3M+</span>
+                                            <span>patients helped</span>
+                                        </div>
+</td>                                    
+</tr>
 
+<tr>
+<td rowspan="9">
+<h1>All your medical records</h1>
+<h2><b>In one secure app.</h2>
+<p size="5">
+ <!--<font size="3">&#8680;-->Prescription Become Paperless.Your data will be secure.View all past prescription on one click.All Process is Online.<br/>
+ Its main aim is to reduce paper prescriptions, and the risk of error associated with written prescriptions.<br/>
+ The main risk of a handwritten prescription is that it may be illegibly written, <br/>which might lead to being improperly interpreted by the pharmacist, ultimately proving fatal to the patient.<br/>Also, a paper prescription runs the risk of being misplaced or be damaged.
+<br/>
+E-prescriptions do not have the risk of being misinterpreted or damaged. Hence, medical records can be maintained accurately.
+</p>
+</td>
+<td>
+<div class="home-consult-section home-illustration">
+<img id="consultDefaultImage" src="../shared/img/phr.svg" class="hide"></br>
+</div>
+</td>
 
-
-
-
-
-
-
-
-
-
+                               
+</table>
 
       <!-- Bottom Footer -->
       <?php

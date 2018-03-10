@@ -63,18 +63,113 @@ echo '<div class="btn btn-dark btn-lg btn-block">Enter Appropriate Username and 
 
 	}		
 }	
-
-
 	else
 	{
 		//header('location:../visitor/index.php');
 		
 	}
-	
-
-	
-    
     ?>
+	  <script type="text/javascript">
+	   function validate_form() {
+	    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(document.sign.eid.value)) {
+                alert("You have entered an invalid email address!")
+                return (false)
+            }
+			var p=document.getElementById("passw").value;
+			if(p.length<6)
+			{
+				alert("Password must be at least 6 characters long.");
+				return (false);
+			}
+		
+		
+			var mnum=documnet.sign.mno.value;
+			
+			//var na = /^[a-zA-Z]+$/;
+			if((mnum.length < 1) || (mnum.length > 15))
+			{
+				alert(" Your Mobile Number must be 1 to 15 Integers.");
+				return (false);
+			}	
+			var right= /^[A-Za-z]+$/;
+	var a=document.getElementById("una").value;
+	if(!(a.match(right)))
+	{
+		alert("Username must have alphabet characters only");
+		return (false);
+	}
+	
+	   }
+	   function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 &&
+                (charCode < 48 || charCode > 57)) {
+                alert("Enter Number");
+                return false;
+            }
+            return true;
+        }
+		/*function passvalid()
+		{
+			var p=document.getElementById("passw").value;
+			if(p.length<6)
+			{
+				alert("Password must be at least 6 characters long.");
+			}
+		
+
+		}*/
+		/*var na=documnet.sign.name.value;
+		function allLetter(na)
+	{
+	 var letters = /^[A-Za-z]+$/;
+    if(!(na.value.match(letters.value)))
+    {
+		alert('Username must have alphabet characters only');
+        //return true;
+    }
+}*/
+/*function uname()
+{
+	var right= /^[A-Za-z]+$/;
+	var a=document.getElementById("una").value;
+	if(!(a.match(right)))
+	{
+		alert("Username must have alphabet characters only");
+		return (false);
+	}
+	//else{
+	//	alert("Username must have alphabet characters only");
+	//}
+}*/
+/*function f(){
+var el=document.sign.name.value;
+var re=/^[a-z]+$/;
+if(!re.test(el.value))
+ {
+	alert("Please enter char only");
+	//errors[errors.length] = "You valid Name .";
+ }
+}*/
+
+		/*var inputtext=document.name.value;
+function inputAlphabet(inputtext, alertMsg){
+//var alphaExp = /^[a-zA-Z]+$/;
+var ck_name = /^[A-Za-z]+$/;
+var name = sign.name.value;
+if (!ck_name.test(name)) {
+  errors[errors.length] = "You valid Name .";
+ }
+if(inputtext.value.match(alphaExp)){
+return true;
+}else{
+document.getElementById('p1').innerText = alertMsg;
+inputtext.focus();
+return false;
+}
+}*/
+
+</script>
 </head>
 
     <body>
@@ -126,7 +221,7 @@ else
 }
 ?>
 
-	<form action="login.php" method="post" >
+	<form action="login.php" method="post"name="doc" >
         <div class="top-content">
         	
            <!-- <div class="inner-bg">-->
@@ -202,14 +297,14 @@ else
 	                        		</div>
 	                            </div>
 	                            <div class="form-bottom">
-				                    <form role="form" action="" method="post" class="registration-form">
+				                    <form role="form" onsubmit="return validate_form();"action="" method="post" class="registration-form"name="sign">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="form-email">Email id</label>
 				                        	<input type="text" name="eid" placeholder="Email id..." class="form-email form-control"required >
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="pass" placeholder="Password..." class="form-passwd form-control" required>
+				                        	<input type="password" name="pass" placeholder="Password..." pattern="[A-Za-z0-9]{6,10}" title="Password must be at least 6 to 10 characters long." class="form-passwd form-control"id="passw" required>
 				                        </div>
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-doclic-no">Licence No</label>
@@ -218,7 +313,7 @@ else
 	
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-name">Name</label>
-				                        	<input type="text" name="name" placeholder="Name..." class="form-name form-control" id="form-name">
+				                        	<input type="text" name="name" placeholder="Name..."id="una" pattern="[A-Za-z]" class="form-control">
 				                        </div>
 										<div class="form-group">
 										<center>
@@ -230,7 +325,7 @@ else
 										
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-mobile-no">Mobile No</label>
-				                        	<input type="text" name="mno" placeholder="Mobile no..." class="form-mno form-control" id="form-email">
+				                        	<input type="text" name="mno" onkeypress="return isNumberKey(event)"placeholder="Mobile no..." class="form-mno form-control" id="form-email">
 				                        </div>
 									
 	

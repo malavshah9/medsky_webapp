@@ -158,14 +158,14 @@ class doc_all
         return $result;
         doc_all::disconnect();
     }
-    public function addinfo($id,$fk_spec_id,$fk_deg_id,$img,$add)
+    /*public function addinfo($id,$fk_spec_id,$fk_deg_id,$add)
     {
         $cnn=doc_all::connect();
-        $q="insert into doctor_mst values('". $fk_spec_id ."','". $fk_deg_id ."','". $img ."','". $add ."' where pk_doc_email_id='". $id ."')";
+        $q="insert into doctor_mst values('". $fk_spec_id ."','". $fk_deg_id ."','". $add ."' where pk_doc_email_id='". $id ."')";
         $result=$cnn->query($q);
         return $result;
         doc_all::disconnect();
-    }
+    }*/
     public function getpassword($enteredid)
     {
         $cnn=doc_all::connect();
@@ -190,7 +190,10 @@ class doc_all
         }
         doc_all::disconnect();
     }
-    
+    /*public function updatedoc($lno,$name,$spec,$deg,$img,$add,$gen,$mno)
+    {
+
+    }*/
 
 }
 ?>

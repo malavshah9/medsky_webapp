@@ -9,6 +9,12 @@
   //  include '../Shared/Assets/links.php';
   include '../Shared/link.php';
     ?>
+
+    <link rel="stylesheet" href="style.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="choosen.js"></script>
+
+
   </head>  
   
   <body class="size-1140">
@@ -109,12 +115,13 @@ $id=$_SESSION["id"];
     }
     
     require '../Shared/Classes/classdoc.php';
-    require '../Shared/Classes/classspeci.php';
+    //require '../Shared/Classes/classspeci.php';
     require '../Shared/Classes/classdeg.php';
     ?>
     <?php
       include '../Shared/link.php';
      // require '../shared/header.php';
+    
        
     ?>
     
@@ -131,14 +138,6 @@ $mob=$row["doc_mno"];
 $gen=$row["doc_gen"];
 
 ?>
-<!--?php
-    $conn=new spec_all;
-    $result=$conn->insert($na);
-    $row=$result->fetch_assoc();
-    $na=$_POST["spec"];
-    
-    
-?>-->
 <?php
     if(isset($_POST["btn1"]))
     {
@@ -161,7 +160,7 @@ $gen=$row["doc_gen"];
          </div>
      </div>
      <div class="form-bottom" align="left">
-         <form role="form" action="docprofile.php" method="post" class="registration-form">
+         <form role="form" action="adddetails.php" method="post" class="registration-form">
          <table height="60%"width="100%">
              <div>
                 <tr>
@@ -200,7 +199,28 @@ $gen=$row["doc_gen"];
              <div class="form-group">
              <tr>
              <td><b><label class="sr-only" for="form-name">Specialist :-</label></td>
-             <td><input type="text" value=""size="100" placeholder="Specialist..." id="" name="spec"class="form-control" class="input-text "></td>
+             
+            <?php
+               require '../Shared/Classes/classspeci.php';
+               $cn1=new spec_all();
+               $res=$cn1->select_all();
+           
+            echo '<td>';
+            echo '<select class="chosen" name="spec" style="width:500px;">';
+
+                
+             
+             while($rw=$res->fetch_assoc())
+             {
+                            echo '<option value="'.$rw["pk_spec_id"].'">'.$rw["spec_name"].'</option>';
+             }
+             echo ' </select></td>'
+                ?>
+           
+
+             
+             <!--<input type="text" value=""size="100" placeholder="Specialist..." id="" name="spec"class="form-control" class="input-text ">-->
+             </td>
             </tr>
              </div>
             
@@ -219,14 +239,14 @@ $gen=$row["doc_gen"];
              <div class="form-group">
              <tr>
             <td><b><label class="sr-only" for="form-name">Address :-</label></td>
-            <td><textarea rows="5" cols="50"size="100"placeholder="Address..."></textarea></td>
+            <td><textarea rows="5" cols="50"size="100"placeholder="Address..."name="add"></textarea></td>
             </tr>
         
              </div>
              <tr>
              <td>
            <center><font size="12"><button type="submit"name="btn">Add Details</button></center>
-          <td>  <font size="12"><button type="submit"name="btn1">Change Password</button></td>
+          <td><font size="3"color="#49BF4C"><a href="chngdocpass.php">Change Password??</a></td>
              </tr>
              </table>
             </form>
@@ -254,6 +274,10 @@ $gen=$row["doc_gen"];
 
 </div>
 
+<script type="text/javascript">
+$(".chosen").chosen();
+</script>
 </body>
+
   </html>
    

@@ -8,6 +8,7 @@
 	}
 ?>
     <head>
+
 	<?php
 	include '../Shared/styleofpatlog.php';
 	?>
@@ -76,6 +77,48 @@ else
 }
 
 ?>
+	<script type="text/javascript">
+	   function validate_form() {
+	    if (!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(document.psign.id.value)) {
+                alert("You have entered an invalid email address!")
+                return (false)
+            }
+			var p=document.getElementById("passw").value;
+			if(p.length<6)
+			{
+				alert("Password must be at least 6 characters long.");
+				return (false);
+			}
+			var mnum=documnet.psign.mno.value;
+			
+			//var na = /^[a-zA-Z]+$/;
+			if((mnum.length < 1) || (mnum.length > 15))
+			{
+				alert(" Your Mobile Number must be 1 to 15 Integers.");
+				return (false);
+			}	
+			var right= /^[A-Za-z]+$/;
+	var a=document.getElementById("una").value;
+	if(!(a.match(right)))
+	{
+		alert("Username must have alphabet characters only");
+		return (false);
+	}
+	
+	   }
+		
+	   
+	   function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode != 46 && charCode > 31 &&
+                (charCode < 48 || charCode > 57)) {
+                alert("Enter Number");
+                return false;
+            }
+            return true;
+        }
+	
+	</script>
     </head>
 
   <body>
@@ -195,19 +238,19 @@ else
 	                        		</div>
 	                            </div>
 	                            <div class="form-bottom">
-				                    <form role="form" action="" method="post" class="registration-form">
+				                    <form role="form" onsubmit="return validate_form();"action="" method="post" class="registration-form"name="psign">
 				                    	<div class="form-group">
 				                    		<label class="sr-only" for="form-email">Email id</label>
 				                        	<input type="text" name="id" placeholder="Email id..." class="form-email form-control"required >
 				                        </div>
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-password">Password</label>
-				                        	<input type="password" name="pass" placeholder="Password..." class="form-passwd form-control" required>
+				                        	<input type="password" name="pass" placeholder="Password..." class="form-passwd form-control" id="passw" required>
 				                        </div>
 										
 				                        <div class="form-group">
 				                        	<label class="sr-only" for="form-name">Name</label>
-				                        	<input type="text" name="name" placeholder="Name..." class="form-name form-control" id="form-name">
+				                        	<input type="text" name="name" id="una" placeholder="Name..." class="form-name form-control" id="form-name">
 				                        </div>
 										<div class="form-group">
 										<center>
@@ -219,8 +262,9 @@ else
 										
 										<div class="form-group">
 				                        	<label class="sr-only" for="form-mobile-no">Mobile No</label>
-				                        	<input type="text" name="mno" placeholder="Mobile no..." class="form-mno form-control" id="form-email">
+				                        	<input type="text" name="mno" onkeypress="return isNumberKey(event)"placeholder="Mobile no..." class="form-mno form-control" id="form-email">
 				                        </div>
+									</div>
 									
 	
 									 <button type="submit"name="btn" >Sign me up!</button>

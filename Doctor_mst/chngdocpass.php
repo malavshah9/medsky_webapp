@@ -42,6 +42,41 @@ button {
 
 
 </style>
+<?php
+//session_start();
+$_email=$_SESSION['id'];
+if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+        $_newpass=$_POST["np"];
+        $_oldpass=$_POST["op"];
+        $_repepass=$_POST["cp"];
+        if($_newpass==$_repepass){
+            require '../Shared/Classes/classdoc.php';
+        $obj=new doc_all();
+        $result=$obj->chngpass($_email,$_oldpass,$_newpass);
+        //echo "update user_tbl set user_pass='".$_newpass."' where email_id='".$_email."' ";
+        if($result===true){
+            //$obj=new doc_all();
+            //$conn->verify($did,$na,$token);
+            echo '<div class="btn btn-dark btn-lg btn-block">Password is Successfully Updated </div>';
+           // header('location:../visitors/login.php');
+        }
+        else{
+           
+            echo '<div class="btn btn-dark btn-lg btn-block">Password is incorrect </div>';
+           // header('location:../visitors/login.php');
+            //echo "Not done";
+           // echo $result;
+        }
+        }
+        else{
+            //header('location:../visitors/login.php');
+            echo '<div class="btn btn-dark btn-lg btn-block">Password are not same.. </div>';
+           // echo "Passwords are not same";
+        }
+    }
+
+?>
     </head>
 
     <body>
@@ -66,7 +101,7 @@ button {
          </div>
      </div>
      <div class="form-bottom">
-         <form role="form" action="changepassword.php" method="post" class="registration-form">
+         <form role="form" action="chngdocpass.php" method="post" class="registration-form">
              <div class="form-group">
                  <label class="sr-only" for="form-email">Old Password</label>
                  <input type="password" name="op"  value="" placeholder="Enter Old Password..."class="form-email form-control"required>
@@ -83,4 +118,18 @@ button {
           <div class="control-group">
 									<button type="submit"name="num1">Change Password</button>
                                     </div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+      &nbsp;&nbsp;&nbsp;
+      
+      <a href="../visitors/login.php"align="Right"><u>Log In..??</u></a>
+            
 
